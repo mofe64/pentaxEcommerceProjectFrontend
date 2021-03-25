@@ -1,5 +1,4 @@
 .header-div {
-  /* background-color: red; */
   height: 80px;
   position: absolute;
   width: 100%;
@@ -14,11 +13,33 @@
   z-index: 99;
   transition: all 0.3s ease-in;
 }
+.header-area-large {
+  width: 1519px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  height: 80px;
+  z-index: 99;
+  transition: all 0.3s ease-in;
+}
 .navbar {
   height: 80px;
   box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
   margin: 0px auto 0;
   max-width: 1200px;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease-in;
+}
+.navbar-large {
+  height: 80px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+  margin: 0px auto 0;
+  max-width: 100%;
+  transition: all 0.3s ease 0s;
   display: flex;
   background-color: #fff;
   justify-content: space-between;
@@ -55,6 +76,18 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
+  z-index: 999;
+  text-align: center;
+  padding: 5px 20px;
+  background: linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
+  transition: all 1s ease-out;
+}
+.search-input-box-large {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%;
   z-index: 999;
   text-align: center;
   padding: 5px 20px;
