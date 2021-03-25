@@ -1,0 +1,5 @@
+.home-container {
+  background: url(../assets/banner-bg.jpg) center no-repeat;
+  min-height: 100vh;
+  background-size: cover;
+}
