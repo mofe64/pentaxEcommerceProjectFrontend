@@ -139,3 +139,29 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1500px) {
+  .header-area-large {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    height: 80px;
+    z-index: 99;
+    transition: all 0.3s ease-in;
+  }
+
+  .navbar-large {
+    height: 80px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+    margin: 0px auto 0;
+    max-width: 100%;
+    transition: all 0.3s ease 0s;
+    display: flex;
+    background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease-in;
+  }
+}
