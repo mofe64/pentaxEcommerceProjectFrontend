@@ -46,7 +46,7 @@ const Header = () => {
                                  <a href="/">HOME</a>
                             </li>
                             <li className='nav-link'>
-                                <a href='/'>SHOP</a>
+                                <a href='/shop'>SHOP</a>
                             </li>
                             <li className='nav-link'>
                                 <a href='/'>CONTACT</a>

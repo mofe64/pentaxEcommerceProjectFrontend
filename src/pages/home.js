@@ -8,11 +8,12 @@ import cg4 from '../assets/c4.webp';
 import cg5 from '../assets/c5.webp';
 import p1 from '../assets/p1.webp';
 import p2 from '../assets/p2.webp';
+import Footer from '../components/footer';
+import ProductCard from '../components/productCard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus, faTruck, faUndo, faHeadset, faCreditCard,
-    faShoppingBag, faHeart, faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 const Home = function () {
@@ -91,27 +92,22 @@ const Home = function () {
                     </div>
                 </div>
             </div>
-            <div className='products'>
-                <div className='products-top'>
+            <div className='products-home'>
+                <div className='products-home-top'>
                     <h1>Latest Products</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                         sed do eiusmod tempor incididunt ut labore et
                     </p>
                 </div>
-                <div className='products-bottom'>
-                    <div className='product'>
-                        <img src={p1} alt="shoe" />
-                        <h4>Addidas New Hammer Sole</h4>
-                        <p>150.00</p>
-                        <div className='product-actions'>
-                            <FontAwesomeIcon icon={faShoppingBag} />
-                            <FontAwesomeIcon icon={faHeart} />
-                            <FontAwesomeIcon icon={faInfoCircle}/>
-                        </div>
-                    </div>
+                <div className='products-home-bottom'>
+                    <ProductCard productImage={p1}/>
+                    <ProductCard productImage={p2} />
+                    <ProductCard productImage={p1} />
+                    <ProductCard productImage={p2} />
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }
