@@ -37,6 +37,7 @@
   margin-right: 3rem;
   padding: 2rem 3rem;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 .category h4 {
   color: black;

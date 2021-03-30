@@ -1,0 +1,131 @@
+.product-detail-head {
+  background: url(../assets/banner-bg.jpg) center no-repeat;
+  height: 50vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.product-detail-head-content h1 {
+  margin-right: 8rem;
+  color: white;
+  font-size: 4rem;
+  margin-left: 7rem;
+  font-weight: 700;
+}
+.product-detail-image-area {
+  padding-top: 120px;
+  display: flex;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.product-detail-image-left {
+  background: #828bb3;
+  width: 50%;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.product-detail-image {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-detail-image img {
+  width: 60%;
+}
+.product-image-controls {
+  margin-right: 2rem;
+}
+.c-1 {
+  height: 5px;
+  width: 20px;
+  background: #dddddd;
+  margin: 5px;
+  display: block;
+  content: "";
+  border-radius: 50px;
+  cursor: pointer;
+}
+.active {
+  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  width: 30px;
+}
+
+.product-detail-image-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem;
+}
+
+.product-name {
+  font-size: 24px;
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 10px;
+}
+.product-price h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.product-meta {
+  font-size: 15px;
+}
+.product-meta {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.product-meta p {
+  padding-bottom: 1rem;
+}
+.product-meta p span {
+  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.product-desc p {
+  padding-top: 20px;
+  border-top: 1px dotted #d5d5d5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+.product-qty {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.product-qty label {
+  font-size: 16px;
+}
+.product-qty input {
+  border: gray solid 1px;
+  outline: none;
+  margin-left: 1rem;
+  border-radius: 3px;
+}
+.product-cta {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.product-cta button {
+  line-height: 38px;
+  padding: 0px 38px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  color: white;
+  font-weight: 500;
+}

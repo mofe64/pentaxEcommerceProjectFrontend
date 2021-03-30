@@ -4,13 +4,13 @@ import {
     faShoppingBag, faHeart, faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-const ProductCard = ({ productImage }) => {
+const ProductCard = ({ product, onClick=f=>f }) => {
     return (
-        <div className='product'>
-            <img src={productImage} alt="shoe" />
+        <div className='product' onClick={onClick}>
+            <img src={product.image} alt="shoe" />
             <div className='product-details'>
-                <h4>Addidas New Hammer Sole</h4>
-                <p>150.00</p>
+                <h4>{ product.name}</h4>
+                <p>N { product.price }</p>
                 <div className='product-actions'>
                     <div className='product-action-link'>
                         <FontAwesomeIcon icon={faShoppingBag} />

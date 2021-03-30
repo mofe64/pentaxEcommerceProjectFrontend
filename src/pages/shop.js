@@ -1,84 +1,107 @@
 import '../css/shop.css';
 import ProductCard from '../components/productCard';
-import p1 from '../assets/p1.webp';
-import p2 from '../assets/p2.webp';
 import Footer from '../components/footer';
-
+import { getCategories, getProductsForACategory } from '../service/product';
+import LoadingAnimation from '../components/loadingAnimation'
 import Header from '../components/header';
-const Shop = function () {
-    return (
-        <>
-            <Header />
-            <div className='shop-head'>
-                <div className='shop-head-content'>
-                    <h1>Shop till you drop</h1>
+import { useState, useEffect } from 'react';
+import {withRouter } from 'react-router-dom';
+    
+const Shop = withRouter( function  ({history}) {
+    const [categories, setCategories] = useState([]);
+    const [dataLoaded, setDataLoaded] = useState(false)
+    const [categoryProducts, setCategoryProducts] = useState([])
+    const [activeCategory, setActiveCategory] = useState(0);
+    const changeActiveCategory = (categoryIndex) => {
+        setActiveCategory(categoryIndex);
+    }
+    const fetchData = async () => {
+        let cartegoryList = await getCategories()
+        setCategories(cartegoryList);
+        let activeCategoryProducts = await getProductsForACategory(cartegoryList[activeCategory].id);
+        setCategoryProducts(activeCategoryProducts)
+        setDataLoaded(true);
+           
+    }
+    useEffect( () => {
+       fetchData()
+    },
+     [activeCategory])
+    if (dataLoaded) {
+        return (
+            <>
+                <Header />
+                <div className='shop-head'>
+                    <div className='shop-head-content'>
+                        <h1>Shop till you drop</h1>
+                    </div>
                 </div>
-            </div>
-            <div className='shop-main'>
-                <div className='main-left'>
-                    <div className='category-header'>
-                        <h4>Browse Catgories</h4>
-                    </div>
-                    <div className='category'>
-                        <h4>Category 1</h4>
-                    </div>
-                     <div className='category'>
-                        <h4>Category 2</h4>
-                    </div>
-                     <div className='category'>
-                        <h4>Category 3</h4>
-                    </div>
-                     <div className='category'>
-                        <h4>Category 4</h4>
-                    </div>
-                </div>
-                <div className='main-right'>
-                    <div className='product-container'>
-                        <div className='container-header'>
-                            <div className='header-left'>
-                                <div className='filter'>
-                                    <label for='filter'></label>
-                                    <select name='filter'>
-                                        <option value="" selected disabled hidden>Default</option>
-                                        <option value='price'>Price</option>
-                                        <option value="default">Default</option>
-                                    </select>
+                <div className='shop-main'>
+                    <div className='main-left'>
+                        <div className='category-header'>
+                            <h4>Browse Catgories</h4>
+                        </div>
+                        {categories.map((category,i) => {
+                            return (
+                                <div key={category.id} className='category'
+                                    onClick={ ()=> {changeActiveCategory(i)}}
+                                >
+                                    <h4>{ category.name}</h4>
                                 </div>
-                                <div className='filter'>
-                                    <label for='filter'></label>
-                                    <select name='filter'>
-                                        <option value="" selected disabled hidden>Show 12</option>
-                                        <option value='Show 20'>Show 20</option>
-                                        <option value="Show 10">Default</option>
-                                    </select>
+                            )
+                        })}
+                    </div>
+                    <div className='main-right'>
+                        <div className='product-container'>
+                            <div className='container-header'>
+                                <div className='header-left'>
+                                    <div className='filter'>
+                                        <label htmlFor='filter'></label>
+                                        <select name='filter'>
+                                            <option value="" selected disabled hidden>Default</option>
+                                            <option value='price'>Price</option>
+                                            <option value="default">Default</option>
+                                        </select>
+                                    </div>
+                                    <div className='filter'>
+                                        <label htmlFor='filter'></label>
+                                        <select name='filter'>
+                                            <option value="" selected disabled hidden>Show 12</option>
+                                            <option value='Show 20'>Show 20</option>
+                                            <option value="Show 10">Default</option>
+                                        </select>
+                                    </div>
+                                    
                                 </div>
-                                
+                                <div className='header-right'>
+                                    <ul>
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className='header-right'>
-                                <ul>
-                                    <li>1</li>
-                                    <li>2</li>
-                                    <li>3</li>
-                                    <li>4</li>
-                                </ul>
+                            <div className='products-shop'>
+                                {(dataLoaded) ? categoryProducts.map((product => {
+                                    return (
+                                        <ProductCard product={product} onClick={()=>history.push(`/${product.id}`) }/>
+                                    )
+                                })): <LoadingAnimation/> }
                             </div>
                         </div>
-                        <div className='products-shop'>
-                            <ProductCard productImage={p1} />
-                            <ProductCard productImage={p2} />
-                            <ProductCard productImage={p1} />
-                            <ProductCard productImage={p2} />
-                            <ProductCard productImage={p2} />
-                            <ProductCard productImage={p1} />
-                            <ProductCard productImage={p2} />
-                            <ProductCard productImage={p1} />
-                        </div>
                     </div>
                 </div>
+                <Footer/>
+            </>
+        )
+    } else {
+        return (
+            <div>
+                <LoadingAnimation/>
             </div>
-            <Footer/>
-        </>
-    )
-}
+        )
+    }
+})
 
 export default Shop
