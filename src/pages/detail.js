@@ -3,7 +3,8 @@ import '../css/productDetail.css';
 import Footer from '../components/footer';
 import {getAProduct } from '../service/product';
 import { useState, useEffect } from 'react';
-import LoadingAnimation from '../components/loadingAnimation'
+import LoadingAnimation from '../components/loadingAnimation';
+import PageHeader from '../components/pageHeader';
 
 const ProductDetail = function ({ match }) {
     const [productId, setProductId] = useState(match.params.productId);
@@ -27,11 +28,7 @@ const ProductDetail = function ({ match }) {
         return (
             <>
                 <Header />
-                <div className='product-detail-head'>
-                    <div className='product-detail-head-content'>
-                        <h1>Product Detail</h1>
-                    </div>
-                </div>
+                <PageHeader displayText="Product Details"/>
                 <div className='product-detail-image-area'>
                     <div className='product-detail-image-left'>
                         <div className='product-detail-image'>

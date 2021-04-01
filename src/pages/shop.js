@@ -5,7 +5,8 @@ import { getCategories, getProductsForACategory } from '../service/product';
 import LoadingAnimation from '../components/loadingAnimation'
 import Header from '../components/header';
 import { useState, useEffect } from 'react';
-import {withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import PageHeader from '../components/pageHeader';
     
 const Shop = withRouter( function  ({history}) {
     const [categories, setCategories] = useState([]);
@@ -31,11 +32,7 @@ const Shop = withRouter( function  ({history}) {
         return (
             <>
                 <Header />
-                <div className='shop-head'>
-                    <div className='shop-head-content'>
-                        <h1>Shop till you drop</h1>
-                    </div>
-                </div>
+               <PageHeader displayText="Shop till you drop "/>
                 <div className='shop-main'>
                     <div className='main-left'>
                         <div className='category-header'>
