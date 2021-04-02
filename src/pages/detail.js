@@ -34,17 +34,6 @@ const ProductDetail = function ({ match }) {
                         <div className='product-detail-image'>
                             <img src={product.image} alt='product' style={{ width: '100%' }} />
                         </div>
-                        <div className='product-image-controls'>
-                            <div className='c-1 active'>
-                                <span></span>
-                            </div>
-                            <div className='c-1'>
-                                <span></span>
-                            </div>
-                            <div className='c-1'>
-                                <span></span>
-                            </div>
-                        </div>
                     </div>
                     <div className='product-detail-image-right'>
                         <div className='product-detail-image-right-content'>
