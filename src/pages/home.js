@@ -14,9 +14,7 @@ import LoadingAnimation from '../components/loadingAnimation';
 import {withRouter } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faPlus, faTruck, faUndo, faHeadset, faCreditCard,
-} from '@fortawesome/free-solid-svg-icons';
+import {faPlus, faTruck, faUndo, faHeadset, faCreditCard,} from '@fortawesome/free-solid-svg-icons';
 
 const Home = withRouter(function ({history}) {
     const [featuredProducts, setFeaturedProducts] = useState([])
@@ -27,7 +25,7 @@ const Home = withRouter(function ({history}) {
                 setFeaturedProducts(res.data)
                 setDataLoaded(true)
             }).catch()
-    })
+    },[featuredProducts])
     if (dataLoaded) {
         return (
             <>

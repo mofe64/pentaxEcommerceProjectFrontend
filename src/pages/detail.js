@@ -14,14 +14,13 @@ const ProductDetail = function ({ match }) {
         let product = await getAProduct(productId);
         console.log(product);
         setProduct(product)
-        setDataLoaded(true);
-           
+        setDataLoaded(true);   
     }
 
-    useEffect( () => {
+    useEffect(() => {
        fetchProductDetails()
-    },
-        [productId])
+    }, [productId])
+    
     if (dataLoaded) {
         
     
