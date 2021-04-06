@@ -24,10 +24,10 @@ const Shop = withRouter( function  ({history}) {
         setDataLoaded(true);
            
     }
-    useEffect( () => {
+    useEffect(() => {
        fetchData()
-    },
-     [activeCategory])
+    }, [activeCategory])
+    
     if (dataLoaded) {
         return (
             <>
