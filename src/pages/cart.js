@@ -3,11 +3,11 @@ import PageHeader from '../components/pageHeader';
 import Footer from '../components/footer';
 import '../css/cart.css';
 import testImage from '../assets/banner-img.webp';
-const { useState } = require("react");
+// const { useState } = require("react");
 
 
 const Cart = () => {
-    const [cart, setCart] = useState([])
+    // const [cart, setCart] = useState([])
     return (
         <>
             <Header />
@@ -17,7 +17,7 @@ const Cart = () => {
                     <h6>Cart Items</h6>
                 </div>
                 <div className='cart-item'>
-                    <img src={testImage} />
+                    <img src={testImage}  alt="product"/>
                     <h1>Some Product Name</h1>
                     <input type='number' value={5 }/>
                     <p>N 100000</p>

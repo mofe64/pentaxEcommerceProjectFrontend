@@ -2,24 +2,24 @@ import Header from '../components/header';
 import '../css/productDetail.css';
 import Footer from '../components/footer';
 import {getAProduct } from '../service/product';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import LoadingAnimation from '../components/loadingAnimation';
 import PageHeader from '../components/pageHeader';
 
 const ProductDetail = function ({ match }) {
-    const [productId, setProductId] = useState(match.params.productId);
+    const [productId] = useState(match.params.productId);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [product, setProduct] = useState({})
-    const fetchProductDetails = async () => {
+    const fetchProductDetails = useCallback( async () => {
         let product = await getAProduct(productId);
         console.log(product);
         setProduct(product)
         setDataLoaded(true);   
-    }
+    },[productId])
 
     useEffect(() => {
        fetchProductDetails()
-    }, [productId])
+    },[fetchProductDetails])
     
     if (dataLoaded) {
         

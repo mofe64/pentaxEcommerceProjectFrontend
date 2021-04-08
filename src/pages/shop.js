@@ -4,7 +4,7 @@ import Footer from '../components/footer';
 import { getCategories, getProductsForACategory } from '../service/product';
 import LoadingAnimation from '../components/loadingAnimation'
 import Header from '../components/header';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 import PageHeader from '../components/pageHeader';
     
@@ -16,17 +16,17 @@ const Shop = withRouter( function  ({history}) {
     const changeActiveCategory = (categoryIndex) => {
         setActiveCategory(categoryIndex);
     }
-    const fetchData = async () => {
-        let cartegoryList = await getCategories()
-        setCategories(cartegoryList);
-        let activeCategoryProducts = await getProductsForACategory(cartegoryList[activeCategory].id);
+    const fetchData =useCallback(async () => {
+        let categoryList = await getCategories()
+        setCategories(categoryList);
+        let activeCategoryProducts = await getProductsForACategory(categoryList[activeCategory].id);
         setCategoryProducts(activeCategoryProducts)
         setDataLoaded(true);
            
-    }
+    },[activeCategory])
     useEffect(() => {
        fetchData()
-    }, [activeCategory])
+    }, [activeCategory, fetchData])
     
     if (dataLoaded) {
         return (

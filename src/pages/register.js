@@ -1,4 +1,4 @@
-import registerImage from '../assets/login.webp';
+
 import Header from '../components/header';
 import PageHeader from '../components/pageHeader'
 import Footer from '../components/footer';
@@ -30,14 +30,14 @@ const RegisterPage = ()=> {
                             <input type="checkbox" id="check" required></input>
                         </div>
                         <div className="label">
-                            <label for="check">By creating an account you agree to our <a href="#">Terms & Privacy</a></label>
+                            <label for="check">By creating an account you agree to our Terms & Privacy</label>
                         </div>
                     </div>
                     
                     <button type="submit">Register</button>
 
                     <div class="signin">
-                        <p>Already have an account? <a href="#">Sign in</a>.</p>
+                        <p>Already have an account? <a href="/login">Sign in</a>.</p>
                     </div>
 
                     </form>

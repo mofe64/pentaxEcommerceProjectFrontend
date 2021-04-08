@@ -1,6 +1,4 @@
-import login from '../assets/login.webp';
 import Header from '../components/header';
-import pageHeader from '../components/pageHeader';
 import Footer from '../components/footer';
 import PageHeader from '../components/pageHeader';
 import '../css/login.css';
@@ -15,7 +13,7 @@ const Login = ()=> {
                         <h1 className="first_line1">New to our website?</h1>
                         <h5 className="h5">There are advances being made in science and technology</h5>
                         <h5 className="h5">everyday, and a good example is the</h5>
-                        <a href="" class="alink">CREATE AN ACCOUNT</a>
+                        <a href="/register" class="alink">CREATE AN ACCOUNT</a>
                     </div>
 
                     <div className="login_side">
@@ -34,10 +32,10 @@ const Login = ()=> {
                         </div>
 
                         <div className="Login_link">
-                            <a href="#" class="login_link">LOG IN</a>
+                            <a href="/" class="login_link">LOG IN</a>
                         </div>
                         <div className="forgot_password">
-                            <a href="#" class="forgot_password">Forgot Password?</a>
+                            <a href="/" class="forgot_password">Forgot Password?</a>
                         </div>
                     </div>
                 </div>
