@@ -15,3 +15,214 @@
   color: #ffba00;
   font-weight: 500;
 }
+.login-form {
+  margin-left: 2rem;
+}
+.login-input {
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.login-input input {
+  margin-right: 2rem;
+  border: 1px solid gray;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+.login-input input::placeholder {
+  color: #ffba00;
+}
+.login-btn {
+  background-color: #ffba00;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  margin-right: 2rem;
+}
+.login-actions {
+  display: flex;
+  align-items: center;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+.remember-me input {
+  margin-left: 1rem;
+}
+.billing {
+  display: flex;
+}
+.billing-details {
+  width: 70%;
+}
+.biling-details-header {
+  border-bottom: 1px solid gainsboro;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.biling-details-header h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.billing-form {
+  display: flex;
+  flex-direction: column;
+}
+.form-control-double {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.form-control-double input {
+  width: 48%;
+  padding: 1rem 2rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+.form-control-double input::placeholder {
+  color: #ffba00;
+}
+.form-control-full {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
+.form-control-full input {
+  padding: 1rem 2rem;
+  border: 1px solid gainsboro;
+  width: 100%;
+  border-radius: 5px;
+}
+.form-control-full input::placeholder {
+  color: #ffba00;
+}
+.create-acccount {
+  display: flex;
+  align-items: center;
+}
+.create-account input {
+  margin-left: 1rem;
+}
+.order-details {
+  margin-left: 2rem;
+  width: 30%;
+  display: flex;
+  flex: 1;
+}
+.order-details-container {
+  background: #e5ecee;
+  padding: 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.order-details-header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid gainsboro;
+}
+.order-details-header h1 {
+  font-size: 2rem;
+}
+.order-breakdown {
+  display: flex;
+  flex-direction: column;
+}
+.breakdown-headers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.subtotal,
+.shipping,
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.subtotal h1,
+.shipping h1,
+.total h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.terms {
+  display: flex;
+  justify-content: space-between;
+}
+.payment-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  color: white;
+}
+@media (max-width: 1200px) {
+  .checkout-container {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+@media (max-width: 980px) {
+  .checkout-container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+@media (max-width: 800px) {
+  .billing-details {
+    width: 60%;
+  }
+  .order-details {
+    width: 40%;
+  }
+}
+@media (max-width: 600px) {
+  .billing {
+    flex-direction: column;
+  }
+  .billing-details {
+    width: 100%;
+  }
+  .order-details {
+    margin-top: 2rem;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .login-form {
+    margin-left: 0;
+  }
+  .login-input {
+    flex-direction: column;
+  }
+  .login-actions {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+  .remember-me {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .form-control-double {
+    flex-direction: column;
+  }
+  .form-control-double input {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .form-control-full {
+    margin-bottom: 0;
+  }
+}
