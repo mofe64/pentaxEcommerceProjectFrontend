@@ -1,10 +1,11 @@
 import login from '../assets/login.webp';
 import Header from '../components/header';
 import pageHeader from '../components/pageHeader';
-import footer from '../components/footer';
+import Footer from '../components/footer';
 import PageHeader from '../components/pageHeader';
+import '../css/login.css';
 
-const login = ()=> {
+const Login = ()=> {
     return(
         <>
             <Header/>
@@ -44,4 +45,4 @@ const login = ()=> {
         </>
     )
 }
-export default login;
+export default Login;
