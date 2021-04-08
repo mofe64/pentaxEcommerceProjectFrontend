@@ -5,6 +5,7 @@ import ProductDetail from './pages/detail';
 import Cart from './pages/cart';
 import CheckOut from './pages/checkout';
 import RegisterPage from './pages/register';
+import Login from './pages/login';
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/checkout' component={CheckOut} />
         <Route exact path = '/register' component={RegisterPage}/>
+        <Route exact path= '/login' component={Login} />
         <Route exact path ='/:productId' component={ProductDetail} />
 
       </Switch>
