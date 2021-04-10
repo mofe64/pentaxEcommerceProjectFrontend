@@ -8,25 +8,33 @@ import cg4 from '../assets/c4.webp';
 import cg5 from '../assets/c5.webp';
 import Footer from '../components/footer';
 import ProductCard from '../components/productCard';
-import React, {useEffect, useState } from 'react';
-import { getFeaturedProducts } from '../service/product';
+import React, {useEffect, useState, useCallback } from 'react';
 import LoadingAnimation from '../components/loadingAnimation';
 import {withRouter } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPlus, faTruck, faUndo, faHeadset, faCreditCard,} from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTruck, faUndo, faHeadset, faCreditCard, } from '@fortawesome/free-solid-svg-icons';
+
+import { useSelector, useDispatch } from 'react-redux';
+import * as productActions from '../store/actions/productActions';
 
 const Home = withRouter(function ({history}) {
-    const [featuredProducts, setFeaturedProducts] = useState([])
+    const featuredProducts = useSelector(state => state.products.featuredProducts)
     const [dataLoaded, setDataLoaded] = useState(false);
+    const dispatch = useDispatch();
+
+    const loadFeaturedProducts = useCallback(async () => {
+        try {
+            await dispatch(productActions.getFeaturedProducts());
+        } catch (err) {
+            console.log(err);
+        }
+    },[dispatch])
+
     useEffect(() => {
-        getFeaturedProducts()
-            .then(res => {
-                setFeaturedProducts(res.data)
-                console.log(res.data)
-                setDataLoaded(true)
-            }).catch(console.error)
-    },[featuredProducts])
+        setDataLoaded(false);
+        loadFeaturedProducts().then(()=>setDataLoaded(true))
+    },[dispatch, loadFeaturedProducts])
     if (dataLoaded) {
         return (
             <>
