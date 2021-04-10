@@ -1,6 +1,5 @@
 import Header from '../components/header';
 import '../css/home.css';
-// import bg from '../assets/banner-img.webp';
 import cg1 from '../assets/c1.webp';
 import cg2 from '../assets/c2.webp';
 import cg3 from '../assets/c3.webp';
@@ -29,16 +28,22 @@ const Home = withRouter(function ({history}) {
         } catch (err) {
             console.log(err);
         }
-    },[dispatch])
-
+    }, [dispatch])
+    
     useEffect(() => {
         setDataLoaded(false);
-        loadFeaturedProducts().then(()=>setDataLoaded(true))
+        loadFeaturedProducts().then(setDataLoaded(true))
     },[dispatch, loadFeaturedProducts])
-    if (dataLoaded) {
+    if (!dataLoaded || featuredProducts.length === 0) {
         return (
-            <>
-                <Header />
+            <div>
+                <LoadingAnimation/>
+            </div>
+        )
+     }
+    return (
+        <>
+            <Header />
                 <div className='home-container'>
                     <div className='hero'>
                         <div className='hero-content'>
@@ -110,6 +115,7 @@ const Home = withRouter(function ({history}) {
                         </div>
                     </div>
                 </div>
+            
                 <div className='products-home'>
                     <div className='products-home-top'>
                         <h1>Latest Products</h1>
@@ -125,16 +131,10 @@ const Home = withRouter(function ({history}) {
                         })}
                     </div>
                 </div>
-                <Footer />
-            </>
-        )
-    } else {
-        return (
-            <div>
-                <LoadingAnimation/>
-            </div>
-        )
-    }
+            <Footer />
+        </>
+    )
+    
 })
 
 
