@@ -23,8 +23,9 @@ const Home = withRouter(function ({history}) {
         getFeaturedProducts()
             .then(res => {
                 setFeaturedProducts(res.data)
+                console.log(res.data)
                 setDataLoaded(true)
-            }).catch()
+            }).catch(console.error)
     },[featuredProducts])
     if (dataLoaded) {
         return (
