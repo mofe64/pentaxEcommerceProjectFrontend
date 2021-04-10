@@ -1,10 +1,12 @@
-import { GET_FEATURED_PRODUCTS,GET_ALL_PRODUCTS_IN_CATEGORY } from '../actions/productActions';
+import { GET_FEATURED_PRODUCTS,GET_ALL_PRODUCTS_IN_CATEGORY,FIND_PRODUCT} from '../actions/productActions';
 
 const initialState = {
     featuredProducts: [],
     productsInACategory: [],
     allProducts: [],
-    searchedProducts:[]
+    searchedProducts: [],
+    activeProduct:{}
+    
 }
 
 const productReducer = (state=initialState, action) => {
@@ -13,13 +15,21 @@ const productReducer = (state=initialState, action) => {
             return {
                 ...state,
                 featuredProducts: action.featuredProducts,
-                allProducts: state.allProducts.concat(action.featuredProducts)
+                allProducts: [...new Set(state.allProducts.concat(action.featuredProducts))]
             }
         case GET_ALL_PRODUCTS_IN_CATEGORY:
             return {
                 ...state,
-                productsInACategory: action.categoryProducts
+                productsInACategory: action.categoryProducts,
+                allProducts: [...new Set(state.allProducts.concat(action.categoryProducts))]
             }
+        case FIND_PRODUCT:
+            return {
+                ...state,
+                activeProduct: action.product,
+                allProducts: state.allProducts.concat(action.product)
+            }
+
         default:
             return state;
         
