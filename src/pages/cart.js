@@ -3,6 +3,7 @@ import PageHeader from '../components/pageHeader';
 import Footer from '../components/footer';
 import '../css/cart.css';
 import { useSelector } from 'react-redux';
+import {useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // import * as logger from '../util/logger';
 
@@ -11,6 +12,7 @@ const Cart = () => {
     cart = useSelector(state => state.cart.cart);
     let cartItems = cart["items"];
     let cartItemKeys = Object.keys(cart["items"])
+    const [canCheckout] = useState(cartItemKeys.length > 0);
     const history = useHistory();
     return (
         <>
@@ -44,9 +46,9 @@ const Cart = () => {
                     <button className='to_shop_btn' onClick={()=>{history.push('/shop')}}>
                         Continue Shopping
                     </button>
-                    <button className='to_checkout_btn' onClick={()=>{history.push('/checkout')}}> 
+                    { canCheckout && <button className='to_checkout_btn' onClick={() => { history.push('/checkout') }}>
                         Proceed to Checkout
-                    </button>
+                    </button>}
                 </div>
             </div>
             <Footer/>

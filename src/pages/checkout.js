@@ -119,7 +119,7 @@ const CheckOut = () => {
                                     <label htmlFor='terms'>Accepted terms and conditions</label>
                                     <input type='checkbox' name='terms'/>
                                 </div>
-                                <button className='payment-btn' 
+                                <button className='payment-btn' disabled={!canCheckout}
                                     onClick={checkOutUser}
                                 >
                                     Proceed to Paypal
