@@ -4,12 +4,13 @@ import { faSearch, faCartPlus,faTimes } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { fadeInDown } from 'react-animations';
+import { withRouter, Link } from 'react-router-dom';
 
 const searchAnimation = keyframes`${fadeInDown}`;
 
 const SearchDiv = styled.div` animation: 1.5s ${searchAnimation}`;
 
-const Header = () => {
+const Header = withRouter(({history}) => {
     const [searchButtonClicked, setSearchButtonClicked] = useState(false);
     const [windowScrolled, setWindowSrolled] = useState(false);
     window.onscroll = function (e) {
@@ -18,11 +19,13 @@ const Header = () => {
                 setWindowSrolled(true)
             } else {
                 setWindowSrolled(false)
-            }
-            
+            }  
         }
-
     }
+    const goToCart = () => {
+        history.push('/cart')
+    }
+
     const onSearchIconClick = () => {
         if (searchButtonClicked) {
             setSearchButtonClicked(false)
@@ -43,17 +46,23 @@ const Header = () => {
                     <div className='navbar-right'>
                         <ul className='nav-links'>
                             <li className='nav-link'>
-                                 <a href="/">HOME</a>
+                                <Link to='/'>
+                                    HOME
+                                </Link>
                             </li>
                             <li className='nav-link'>
-                                <a href='/shop'>SHOP</a>
+                                <Link to='/shop'>
+                                    SHOP
+                                </Link>
                             </li>
                             <li className='nav-link'>
-                                <a href='/'>CONTACT</a>
+                                <Link to='/'>
+                                    CONTACT
+                                </Link>
                             </li>
                         </ul>
                         <div className='nav-icons'>
-                            <div className='icon'>
+                            <div className='icon' onClick={goToCart}>
                                 <FontAwesomeIcon icon={faCartPlus}/>
                             </div>
                             <div className="icon">
@@ -82,6 +91,6 @@ const Header = () => {
             </header>
         </div>
     )
-}
+})
 
 export default Header;

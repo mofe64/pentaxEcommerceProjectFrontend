@@ -8,12 +8,17 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import productReducer from './store/reducers/productReducer';
 import categoryReducer from './store/reducers/categoryReducer';
+import cartReducer from './store/reducers/cartReducer';
 
 const rootReducer = combineReducers({
   products: productReducer,
   categories: categoryReducer,
+  cart: cartReducer,
 });
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
+
+
 
 ReactDOM.render(
   <Provider store={store}>

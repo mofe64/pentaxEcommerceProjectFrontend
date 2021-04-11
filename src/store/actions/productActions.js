@@ -1,4 +1,4 @@
-import * as logger from '../../util/logger';
+// import * as logger from '../../util/logger';
 const axios = require('axios').default;
 
 export const GET_FEATURED_PRODUCTS = 'GET_FEATURED_PRODUCTS';
@@ -13,7 +13,7 @@ export const getFeaturedProducts = () => {
     return async (dispatch) => {
         const response = await axios.get('https://pentazon.herokuapp.com/api/v1/product/all');
         const featuredProducts = await response.data;
-        logger.logInfo(featuredProducts)
+        // logger.logInfo(featuredProducts)
         dispatch({type: GET_FEATURED_PRODUCTS, featuredProducts: featuredProducts})
     }
 }
@@ -22,7 +22,7 @@ export const fetchProductsInACategory = (categoryId) => {
     return async (dispatch) => {
         const response = await axios.get(`https://pentazon.herokuapp.com/api/v1/product/all/${categoryId}`);
         const categoryProducts = await response.data;
-        logger.logInfo(categoryProducts)
+        // logger.logInfo(categoryProducts)
         dispatch({type: GET_ALL_PRODUCTS_IN_CATEGORY, categoryProducts: categoryProducts})
     }
 }
@@ -31,7 +31,7 @@ export const findAProduct = (productId) => {
     return async (dispatch) => {
         const response = await axios.get(`https://pentazon.herokuapp.com/api/v1/product/${productId}`)
         const product = await response.data;
-        logger.logInfo(product)
+        // logger.logInfo(product)
         dispatch({type: FIND_PRODUCT, product: product})
     }
 }
