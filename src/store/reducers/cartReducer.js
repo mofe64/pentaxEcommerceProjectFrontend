@@ -1,6 +1,6 @@
 import * as logger from '../../util/logger';
 import Item from '../../util/item';
-import { ADD_TO_CART} from '../actions/cartActions';
+import { ADD_TO_CART, CLEAR_CART} from '../actions/cartActions';
 
 const initialState = {
     cart: {
@@ -37,6 +37,15 @@ const cartReducer = (state=initialState, action) => {
                         [productToAdd.id]: cartItem,
                     },
                     totalAmount: state.cart.totalAmount + itemTotal
+                }
+            }
+        
+        case CLEAR_CART:
+            return {
+                ...state,
+                cart: {
+                    items: {},
+                    totalAmount: 0,
                 }
             }
         default:

@@ -2,9 +2,30 @@ import Header from '../components/header';
 import PageHeader from '../components/pageHeader';
 import Footer from '../components/footer';
 import '../css/checkout.css'
-
+import {useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+import Notification from '../components/notification';
+import {clearCart } from '../store/actions/cartActions'
 
 const CheckOut = () => {
+    let cart;
+    cart = useSelector(state => state.cart.cart);
+    const cartItems = cart["items"];
+    const cartItemKeys = Object.keys(cart["items"])
+    const [canCheckout] = useState(cartItemKeys.length > 0);
+    const [checkedOut, setCheckedOut] = useState(false);
+    const dispatch = useDispatch();
+    const displayNotification = () => {
+        setCheckedOut(true);
+    }
+    const checkOutUser = () => {
+        displayNotification();
+        dispatch(clearCart());
+        setTimeout(()=>{history.push('/')}, 3000);
+    }
+    const history = useHistory();
+
     return (
         <>
             <Header />
@@ -32,6 +53,7 @@ const CheckOut = () => {
                         </div>  
                     </form>
                 </div>
+                {checkedOut && <Notification success={true} text='checkout success' />}
                 <div className='billing'>
                     <div className='billing-details'>
                         <div className='biling-details-header'>
@@ -74,29 +96,16 @@ const CheckOut = () => {
                                     <p>Product</p>
                                     <p>Total</p>
                                 </div>
-                                <div className='order-item'>
-                                    <p>product name</p>
-                                    <p>Qty</p>
-                                    <p>price</p>
-                                </div>
-                                 <div className='order-item'>
-                                    <p>product name</p>
-                                    <p>Qty</p>
-                                    <p>price</p>
-                                </div>
-                                 <div className='order-item'>
-                                    <p>product name</p>
-                                    <p>Qty</p>
-                                    <p>price</p>
-                                </div>
-                                 <div className='order-item'>
-                                    <p>product name</p>
-                                    <p>Qty</p>
-                                    <p>price</p>
-                                </div>
+                                {(cartItemKeys.length > 0) ? Object.keys(cart["items"]).map((key, i) =>
+                                    <div className='order-item' key={i}>
+                                        <p>{cartItems[key].product.name}</p>
+                                        <p>{ cartItems[key].quantity}</p>
+                                        <p>{ cartItems[key].total}</p>
+                                    </div>
+                                ) : <p>No Items in Cart</p>}
                                 <div className='subtotal'>
                                     <h1>SUBTOTAL</h1>
-                                    <p>145550</p>
+                                    <p>{ cart['totalAmount']} </p>
                                 </div>
                                 <div className='shipping'>
                                     <h1>SHIPPING</h1>
@@ -104,13 +113,15 @@ const CheckOut = () => {
                                 </div>
                                  <div className='total'>
                                     <h1>TOTAL</h1>
-                                    <p>1445500</p>
+                                    <p>{ cart['totalAmount']}</p>
                                 </div>
                                 <div className='terms'>
                                     <label htmlFor='terms'>Accepted terms and conditions</label>
                                     <input type='checkbox' name='terms'/>
                                 </div>
-                                <button className='payment-btn'>
+                                <button className='payment-btn' 
+                                    onClick={checkOutUser}
+                                >
                                     Proceed to Paypal
                                 </button>
                             </div>
