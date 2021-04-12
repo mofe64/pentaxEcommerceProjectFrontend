@@ -1,6 +1,6 @@
 import '../css/header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faCartPlus,faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faCartPlus,faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { fadeInDown } from 'react-animations';
@@ -13,6 +13,11 @@ const SearchDiv = styled.div` animation: 1.5s ${searchAnimation}`;
 const Header = withRouter(({history}) => {
     const [searchButtonClicked, setSearchButtonClicked] = useState(false);
     const [windowScrolled, setWindowSrolled] = useState(false);
+    const [showDrawer, setShowDrawer] = useState(false)
+    const toggleDrawer = () => {;
+        if (showDrawer) setShowDrawer(false);
+        if (!showDrawer) setShowDrawer(true);
+    }
     window.onscroll = function (e) {
         if (window.scrollY) {
             if (window.pageYOffset > 50) {
@@ -37,6 +42,7 @@ const Header = withRouter(({history}) => {
         setSearchButtonClicked(false)
     }
     return (
+        <>
         <div className='header-div'>
             <header className={(windowScrolled)? 'header-area-large': 'header-area'}>
                 <nav className={ (windowScrolled)? 'navbar-large': 'navbar'}>
@@ -90,6 +96,41 @@ const Header = withRouter(({history}) => {
                 </SearchDiv>
             </header>
         </div>
+            <div className='header-mobile'>
+                <div className='mobile-nav-head'>
+                    <h1>Pentazon</h1>
+                    <FontAwesomeIcon icon={faBars} className='hamburger' onClick={toggleDrawer} />
+                </div>
+                <div className='mobile-nav' style={
+                    (showDrawer)? {display:'flex'} : {display: 'none'}
+                }>
+                    <FontAwesomeIcon icon={faTimes} className='close-drawer' onClick={toggleDrawer }/>
+                    <ul>
+                    <li className='mobile-navlinks'>
+                        <Link to='/'>
+                            HOME
+                        </Link> 
+                    </li>
+                    <li className='mobile-navlinks'>
+                        <Link to='/shop'>
+                            SHOP
+                        </Link> 
+                    </li>
+                    <li className='mobile-navlinks'>
+                        <Link to='/'>
+                            CONTACT
+                        </Link> 
+                    </li>
+                    <li className='mobile-navlinks'>
+                        <Link to='/cart'>
+                            CART
+                        </Link> 
+                    </li>
+                </ul>
+                </div>
+                
+        </div>
+        </>
     )
 })
 
