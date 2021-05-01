@@ -1,8 +1,20 @@
 const axios = require('axios').default;
 
+// const test = async () => {
+//     try {
+//         const result = await fetch(`https://pentazon.herokuapp.com/api/v1/product/all`)
+//     console.log(result)
+//     } catch (err) {
+//         console.log(err)
+//     }
+    
+// }
+
+console.log('hello')
 export const getFeaturedProducts = async function () {
     try {
-        const featuredProducts = await axios.get('https://pentazon.herokuapp.com/api/v1/product/all');
+        const featuredProducts = await axios.get('https://pentazon.herokuapp.com/api/v1/product/all')
+        
         return featuredProducts;
     } catch (error){
         console.log(error);

@@ -11,6 +11,7 @@ export const SET_PRODUCTS = 'SET_PRODUCTS';
 
 export const getFeaturedProducts = () => {
     return async (dispatch) => {
+    
         const response = await axios.get('https://pentazon.herokuapp.com/api/v1/product/all');
         const featuredProducts = await response.data;
         // logger.logInfo(featuredProducts)
