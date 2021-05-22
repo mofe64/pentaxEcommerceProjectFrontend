@@ -228,6 +228,11 @@
     width: 60%;
   }
 }
+@media (max-width: 440px) {
+  .mobile-nav {
+    width: 60%;
+  }
+}
 @media (max-width: 320px) {
   .icon {
     margin-right: 10px;
